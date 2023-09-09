@@ -1,5 +1,8 @@
 # Informatica PWS: Puzzle Game
 
+## A checked box for emotional support
+- [x] Get a unity project running
+
 ## Game mechanics To-Do
 - [ ] Movement
 - [ ] Moving and picking up physics objects
