@@ -1,7 +1,5 @@
 # Informatica PWS: Puzzle Game
 
----
-
 ## Game mechanics To-Do
 - [ ] Movement
 - [ ] Moving and picking up physics objects
@@ -10,20 +8,14 @@
 - [ ] Laser objectives
 - [ ] *Black Holes bending laser trajectory*
 
----
-
 ## Game essentials To-Do
 - [ ] Multiple levels
 - [ ] Menu
 - [ ] Level trigger system
 - [ ] *Level editor*
 
----
-
 ## Game assets To-Do
 - [ ] Level textures
 - [ ] Physics objects
-
----
 
 cool beans.
