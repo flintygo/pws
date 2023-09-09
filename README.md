@@ -1,4 +1,29 @@
-# pws
-awesome pws yalready knoww
+# Informatica PWS: Puzzle Game
 
-![](http://i.imgur.com/Ssfp7.gif)
+---
+
+## Game mechanics To-Do
+- [ ] Movement
+- [ ] Moving and picking up physics objects
+- [ ] Lasers (Frame-by-frame simulation)
+- [ ] Mirrors
+- [ ] Laser objectives
+- [ ] *Black Holes bending laser trajectory*
+
+---
+
+## Game essentials To-Do
+- [ ] Multiple levels
+- [ ] Menu
+- [ ] Level trigger system
+- [ ] *Level editor*
+
+---
+
+## Game assets To-Do
+- [ ] Level textures
+- [ ] Physics objects
+
+---
+
+cool beans.
