@@ -1,6 +1,6 @@
 # Informatica PWS: Puzzle Game
 
-![Spinny monke](https://media.tenor.com/Fl6m3zSv3XgAAAAC/monkey-spinning.gif)
+![Spinny monke](https://media.tenor.com/IVQgkTbHZhYAAAAd/spinning-monkey-spinning-ape.gif)
 
 ## A checked box for emotional support
 - [x] Get a unity project running
