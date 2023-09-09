@@ -1,6 +1,6 @@
 # Informatica PWS: Puzzle Game
 
-![monke](https://github.com/flintygo/pws/monke.gif)
+![monke](https://github.com/flintygo/pws/blob/main/monke.gif)
 
 ## A checked box for emotional support
 - [x] Get a unity project running
