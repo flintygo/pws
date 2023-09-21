@@ -10,7 +10,11 @@ public class ObjectPickup : MonoBehaviour
     [SerializeField] private Transform Pickuptarget;
     [Space]
     [SerializeField] private float PickupRange;
+
+    [SerializeField] private float RotateSpeed;
     private Rigidbody CurrentObject;
+
+    private Quaternion CurrentObjectRotationOffset;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +30,7 @@ public class ObjectPickup : MonoBehaviour
             if (CurrentObject)
             {
                 CurrentObject.useGravity = true;
+                CurrentObject.angularDrag = 0.05f;
                 CurrentObject = null;
                 return;
             }
@@ -35,6 +40,8 @@ public class ObjectPickup : MonoBehaviour
             {
                 CurrentObject = HitInfo.rigidbody;
                 CurrentObject.useGravity = false;
+                CurrentObject.angularDrag = 5f;
+                CurrentObjectRotationOffset =  CurrentObject.transform.rotation * Quaternion.Inverse(PlayerCamera.transform.rotation);
             }
         }
     }
@@ -47,6 +54,8 @@ public class ObjectPickup : MonoBehaviour
             float DistanceToPoint = DirectionToPoint.magnitude;
 
             CurrentObject.velocity = DirectionToPoint * 12f * DistanceToPoint;
+
+            CurrentObject.transform.rotation = Quaternion.Slerp(CurrentObject.transform.rotation, PlayerCamera.transform.rotation * CurrentObjectRotationOffset, RotateSpeed * Time.deltaTime);
         }
     }
 }
