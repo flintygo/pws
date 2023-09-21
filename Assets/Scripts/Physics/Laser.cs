@@ -13,7 +13,7 @@ public class Laser : MonoBehaviour
 
     private Vector3 laserDirection;
 
-    [SerializeField] private GameObject Emitter;
+    [SerializeField] private GameObject Trigger;
 
     private List<Vector3> points = new List<Vector3>();
 
@@ -48,7 +48,6 @@ public class Laser : MonoBehaviour
 
         while (alive)
         {
-            Debug.DrawRay(points.ElementAt(points.Count-1), laserDirection, Color.green);
             if (Physics.Raycast(points.ElementAt(points.Count-1), laserDirection, out hit, 50f, ~LaserEmitter))
             {
                  //Add (for now ending) point to laser point list
@@ -57,6 +56,11 @@ public class Laser : MonoBehaviour
                 if (hit.transform.tag == "mirror"){
                     laserDirection = Vector3.Reflect(laserDirection, hit.normal);
                     points.Add(points.ElementAt(points.Count-1) + laserDirection * 0.1f);
+                }
+                else if(hit.transform.tag == "lasertrigger"){
+                    var TriggerScript = Trigger.GetComponent<HandleTrigger>();
+                    TriggerScript.trigger();
+                    alive = false;
                 }
                 else{
                     alive = false;
@@ -76,6 +80,8 @@ public class Laser : MonoBehaviour
         lineRenderer.endColor = new Color (1,0,0);
         lineRenderer.startWidth = 0.1f;
         lineRenderer.endWidth = 0.1f;
+        lineRenderer.numCapVertices = 10;
+        lineRenderer.numCornerVertices = 3;
         
 
 
