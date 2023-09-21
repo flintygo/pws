@@ -34,7 +34,7 @@ public class Laser : MonoBehaviour
 
         if (Physics.Raycast(transform.position, LaserDirection, out hit, 20f, ~LaserEmitter))
         {
-            points.Add(new Vector3 (0, 0, 1) * (hit.distance+1f));
+            points.Add(new Vector3 (0, 0, 1) * (hit.distance));
         }
         
 
