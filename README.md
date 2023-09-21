@@ -7,8 +7,8 @@
 
 ## Game mechanics To-Do
 - [x] Movement
-- [~] Moving and picking up physics objects
-- [~] Lasers (Frame-by-frame simulation)
+- [X] Moving and picking up physics objects
+- [ ] Lasers (Frame-by-frame simulation)
 - [ ] Mirrors
 - [ ] Laser objectives
 - [ ] *Black Holes bending laser trajectory*
@@ -21,6 +21,6 @@
 
 ## Game assets To-Do
 - [ ] Level textures
-- [ ] Physics objects
+- [X] Physics objects
 
 cool beans.
