@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Laser : MonoBehaviour
 {
@@ -8,42 +9,76 @@ public class Laser : MonoBehaviour
 
     private LineRenderer lineRenderer;
 
+    private bool alive;
+
+    private Vector3 laserDirection;
+
     [SerializeField] private GameObject Emitter;
 
     private List<Vector3> points = new List<Vector3>();
 
     public LayerMask LaserEmitter;
 
-    // Start is called before the first frame update
+
+
+    //Start is called before the first frame update
     void Start()
     {
+        lineRenderer = gameObject.AddComponent<LineRenderer>();
     }
 
-    // Update is called once per frame
+     //Update is called once per frame
     void Update()
     {
-        // Clear point list to not get duplicates
+         //Clear point list to not get duplicates
         points.Clear();
 
-        // Add starting point
-        points.Add(new Vector3 (0, 0, 0));
+        laserDirection = transform.forward;
 
-        LineRenderer lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer = gameObject.GetComponent<LineRenderer>();
+
+        alive = true;
+
+         //Add starting point
+        points.Add(transform.position);
 
         RaycastHit hit;
 
-        // In which direction Raycast should go
-        Vector3 LaserDirection = new Vector3 (1, 0, 0);
-
         //do a While loop, condition !dead, check hit.transform.gameObject i tink i forgor
 
-        if (Physics.Raycast(transform.position, LaserDirection, out hit, 20f, ~LaserEmitter))
+        while (alive)
         {
-            // Add (for now ending) point to laser point list
-            points.Add(new Vector3 (0, 0, 1) * (hit.distance));
+            Debug.DrawRay(points.ElementAt(points.Count-1), laserDirection, Color.green);
+            if (Physics.Raycast(points.ElementAt(points.Count-1), laserDirection, out hit, 50f, ~LaserEmitter))
+            {
+                 //Add (for now ending) point to laser point list
+                points.Add(points.ElementAt(points.Count-1) + laserDirection * hit.distance);
+
+                if (hit.transform.tag == "mirror"){
+                    laserDirection = Vector3.Reflect(laserDirection, hit.normal);
+                    points.Add(points.ElementAt(points.Count-1) + laserDirection * 0.1f);
+                }
+                else{
+                    alive = false;
+                }
+            }
+            else
+            {
+                points.Add(points.ElementAt(points.Count-1) + laserDirection * 50f);
+                alive = false;
+            }
         }
         
-        // Render the points
+         //Render the points
+        lineRenderer.positionCount = points.Count;
+        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+        lineRenderer.startColor = new Color (1,0,0);
+        lineRenderer.endColor = new Color (1,0,0);
+        lineRenderer.startWidth = 0.1f;
+        lineRenderer.endWidth = 0.1f;
+        
+
+
         lineRenderer.SetPositions(points.ToArray());
     }
 }
