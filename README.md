@@ -6,9 +6,9 @@
 - [x] Get a unity project running
 
 ## Game mechanics To-Do
-- [ ] Movement
-- [ ] Moving and picking up physics objects
-- [ ] Lasers (Frame-by-frame simulation)
+- [x] Movement
+- [~] Moving and picking up physics objects
+- [~] Lasers (Frame-by-frame simulation)
 - [ ] Mirrors
 - [ ] Laser objectives
 - [ ] *Black Holes bending laser trajectory*
