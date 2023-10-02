@@ -16,7 +16,9 @@ public class ObjectPickup : MonoBehaviour
 
     private Quaternion CurrentObjectRotationOffset;
 
-    private float scrollSpeed = 0f;
+    private float rotateValue = 0;
+
+    private Vector3 rotateTorque;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +47,16 @@ public class ObjectPickup : MonoBehaviour
                 CurrentObject.angularDrag = 5f;
             }
         }
+
+        if(!(Input.GetKey(KeyCode.Q) && Input.GetKey(KeyCode.E)) && Input.GetKey(KeyCode.Q)){
+            rotateValue = -1;
+        }
+        else if(!(Input.GetKey(KeyCode.Q) && Input.GetKey(KeyCode.E)) && Input.GetKey(KeyCode.E)){
+            rotateValue = 1;
+        }
+        else{
+            rotateValue = 0;
+        }
     }
 
     void FixedUpdate()
@@ -56,10 +68,11 @@ public class ObjectPickup : MonoBehaviour
 
             CurrentObject.velocity = DirectionToPoint * 12f * DistanceToPoint;
 
-            scrollSpeed = Input.mouseScrollDelta.y;
+            rotateTorque = new Vector3 (0, rotateValue*2f, 0);
 
-            Debug.Log(scrollSpeed);
-            CurrentObject.transform.Rotate(0, scrollSpeed*100f, 0);
+            Vector3 localTorque = CurrentObject.transform.InverseTransformDirection(rotateTorque);
+
+            CurrentObject.AddTorque(localTorque);
         }
     }
 }
