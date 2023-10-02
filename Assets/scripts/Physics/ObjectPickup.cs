@@ -41,7 +41,6 @@ public class ObjectPickup : MonoBehaviour
                 CurrentObject = HitInfo.rigidbody;
                 CurrentObject.useGravity = false;
                 CurrentObject.angularDrag = 5f;
-                CurrentObjectRotationOffset =  CurrentObject.transform.rotation * Quaternion.Inverse(PlayerCamera.transform.rotation);
             }
         }
     }
@@ -55,7 +54,8 @@ public class ObjectPickup : MonoBehaviour
 
             CurrentObject.velocity = DirectionToPoint * 12f * DistanceToPoint;
 
-            CurrentObject.transform.rotation = Quaternion.Slerp(CurrentObject.transform.rotation, PlayerCamera.transform.rotation * CurrentObjectRotationOffset, RotateSpeed * Time.deltaTime);
+            Debug.Log(Input.GetAxisRaw("Mouse ScrollWheel"));
+            CurrentObject.transform.Rotate(0, Input.GetAxisRaw("Mouse ScrollWheel") * 100f, 0);
         }
     }
 }
