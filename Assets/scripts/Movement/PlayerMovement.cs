@@ -57,10 +57,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey (KeyCode.LeftShift)) {
             sprintSpeed = sprintMultiplier;
-            Debug.Log("sprint");
         } else {
             sprintSpeed = 1f;
-            Debug.Log("walk");
         }
     }
 
