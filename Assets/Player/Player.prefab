@@ -229,7 +229,8 @@ MonoBehaviour:
   groundDrag: 5
   jumpForce: 8
   jumpCooldown: 0.25
-  airMultiplier: 0.4
+  airMultiplier: 0.1
+  sprintMultiplier: 2
   jumpKey: 32
   playerHeight: 2
   whatIsGround:
@@ -254,3 +255,4 @@ MonoBehaviour:
   PlayerCamera: {fileID: 0}
   Pickuptarget: {fileID: 0}
   PickupRange: 0
+  RotateSpeed: 0

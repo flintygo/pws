@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
+    public float sprintMultiplier;
+    private float sprintSpeed;
     bool readyToJump;
 
     [Header("Keybinds")]
@@ -52,6 +54,14 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = groundDrag;
         else
             rb.drag = 0;
+
+        if (Input.GetKey (KeyCode.LeftShift)) {
+            sprintSpeed = sprintMultiplier;
+            Debug.Log("sprint");
+        } else {
+            sprintSpeed = 1f;
+            Debug.Log("walk");
+        }
     }
 
     private void FixedUpdate()
@@ -82,11 +92,11 @@ public class PlayerMovement : MonoBehaviour
 
         //on ground
         if(grounded)
-        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        rb.AddForce(moveDirection.normalized * moveSpeed * 10f * sprintSpeed, ForceMode.Force);
 
         //in air
         else if(!grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier * sprintSpeed, ForceMode.Force);
     }
 
     private void speedControl()
@@ -94,9 +104,9 @@ public class PlayerMovement : MonoBehaviour
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         //limit velocity if needed
-        if(flatVel.magnitude > moveSpeed)
+        if(flatVel.magnitude > (moveSpeed * sprintSpeed))
         {
-            Vector3 limitedVel = flatVel.normalized * moveSpeed;
+            Vector3 limitedVel = flatVel.normalized * moveSpeed * sprintSpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
     }
