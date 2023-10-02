@@ -16,6 +16,8 @@ public class ObjectPickup : MonoBehaviour
 
     private Quaternion CurrentObjectRotationOffset;
 
+    private float scrollSpeed = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,8 +56,10 @@ public class ObjectPickup : MonoBehaviour
 
             CurrentObject.velocity = DirectionToPoint * 12f * DistanceToPoint;
 
-            Debug.Log(Input.GetAxisRaw("Mouse ScrollWheel"));
-            CurrentObject.transform.Rotate(0, Input.GetAxisRaw("Mouse ScrollWheel") * 100f, 0);
+            scrollSpeed = Input.mouseScrollDelta.y;
+
+            Debug.Log(scrollSpeed);
+            CurrentObject.transform.Rotate(0, scrollSpeed*100f, 0);
         }
     }
 }
