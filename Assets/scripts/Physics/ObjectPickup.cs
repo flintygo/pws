@@ -72,7 +72,7 @@ public class ObjectPickup : MonoBehaviour
 
             Vector3 localTorque = CurrentObject.transform.InverseTransformDirection(rotateTorque);
 
-            CurrentObject.AddTorque(localTorque);
+            CurrentObject.AddTorque(rotateTorque);
         }
     }
 }
