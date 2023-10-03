@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = 0;
         }
 
-        if (Input.GetKey (KeyCode.LeftShift)) {
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W)) {
             sprintSpeed = sprintMultiplier;
         } else {
             sprintSpeed = 1f;
