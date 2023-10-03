@@ -35,7 +35,6 @@ public class PlayerCam : MonoBehaviour
 
         //FoV change when sprinting
         sprintSpeed = GameObject.Find("Player").GetComponent<PlayerMovement>().sprintSpeed;
-        Debug.Log(sprintSpeed);
         GetComponent<Camera>().fieldOfView = Mathf.Lerp(GetComponent<Camera>().fieldOfView, 60f * (Mathf.Pow(sprintSpeed, 0.5f)), Time.deltaTime * 10f);
         
     }
