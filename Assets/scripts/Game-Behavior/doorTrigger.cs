@@ -8,6 +8,7 @@ public class doorTrigger : MonoBehaviour
 
     bool isOpened = false;
 
+    public float yChange;
     private Vector3 originalLocation;
 
 
@@ -28,7 +29,7 @@ public class doorTrigger : MonoBehaviour
     private void Update()
     {
         
-        door.transform.position = Vector3.Lerp(door.transform.position, new Vector3(0, 10f, 0) * (isOpened ? 1 : 0) + originalLocation, Time.deltaTime * 5f);
+        door.transform.position = Vector3.Lerp(door.transform.position, new Vector3(0, yChange, 0) * (isOpened ? 1 : 0) + originalLocation, Time.deltaTime * 5f);
 
         
     }
