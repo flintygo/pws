@@ -50,10 +50,12 @@ public class PlayerMovement : MonoBehaviour
         speedControl();
 
         //handle drag
-        if (grounded)
+        if (grounded){
             rb.drag = groundDrag;
-        else
+        }
+        else{
             rb.drag = 0;
+        }
 
         if (Input.GetKey (KeyCode.LeftShift)) {
             sprintSpeed = sprintMultiplier;
