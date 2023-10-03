@@ -6,6 +6,7 @@ public class PlayerCam : MonoBehaviour
 {
     public float sensX;
     public float sensY;
+    private float sprintSpeed;
 
     public Transform orientation;
 
@@ -31,5 +32,11 @@ public class PlayerCam : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+
+        //FoV change when sprinting
+        sprintSpeed = GameObject.Find("Player").GetComponent<PlayerMovement>().sprintSpeed;
+        Debug.Log(sprintSpeed);
+        GetComponent<Camera>().fieldOfView = Mathf.Lerp(GetComponent<Camera>().fieldOfView, 60f * (Mathf.Pow(sprintSpeed, 0.5f)), Time.deltaTime * 10f);
+        
     }
 }

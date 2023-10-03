@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpCooldown;
     public float airMultiplier;
     public float sprintMultiplier;
-    private float sprintSpeed;
+    public float sprintSpeed;
     bool readyToJump;
 
     [Header("Keybinds")]
