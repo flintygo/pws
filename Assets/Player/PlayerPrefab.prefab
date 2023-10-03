@@ -79,7 +79,7 @@ MonoBehaviour:
     m_Bits: 1024
   CanBePickedUp:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   orientation: {fileID: 239296425842632111}
 --- !u!114 &441700302327420147
 MonoBehaviour:
