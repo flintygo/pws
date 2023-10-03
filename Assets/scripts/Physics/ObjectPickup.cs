@@ -73,6 +73,12 @@ public class ObjectPickup : MonoBehaviour
             Vector3 localTorque = CurrentObject.transform.InverseTransformDirection(rotateTorque);
 
             CurrentObject.AddTorque(rotateTorque);
+
+            if(DistanceToPoint > 3f){
+                CurrentObject.useGravity = true;
+                CurrentObject.angularDrag = 0.05f;
+                CurrentObject = null;
+            }
         }
     }
 }
