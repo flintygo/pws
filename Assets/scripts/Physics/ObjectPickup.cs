@@ -35,6 +35,7 @@ public class ObjectPickup : MonoBehaviour
             {
                 CurrentObject.useGravity = true;
                 CurrentObject.angularDrag = 0.05f;
+                CurrentObject.velocity.Scale(new Vector3 (0.5f,0.5f,0.5f));
                 CurrentObject = null;
                 return;
             }
@@ -69,8 +70,6 @@ public class ObjectPickup : MonoBehaviour
             CurrentObject.velocity = DirectionToPoint * 12f * DistanceToPoint;
 
             rotateTorque = new Vector3 (0, rotateValue*2f, 0);
-
-            Vector3 localTorque = CurrentObject.transform.InverseTransformDirection(rotateTorque);
 
             CurrentObject.AddTorque(rotateTorque);
 
