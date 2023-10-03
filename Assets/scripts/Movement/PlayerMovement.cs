@@ -22,7 +22,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
+    public LayerMask CanBePickedUp;
     bool grounded;
+    bool grounded1;
 
 
     public Transform orientation;
@@ -45,12 +47,13 @@ public class PlayerMovement : MonoBehaviour
     {
         //ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        grounded1 = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, CanBePickedUp);
 
         MyInput();
         speedControl();
 
         //handle drag
-        if (grounded){
+        if (grounded || grounded1){
             rb.drag = groundDrag;
         }
         else{
@@ -75,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         //when to jump
-        if(Input.GetKey(jumpKey) && grounded && readyToJump)
+        if((Input.GetKey(jumpKey) && grounded && readyToJump) || (Input.GetKey(jumpKey) && grounded1 && readyToJump))
         {
             readyToJump = false;
 
@@ -91,11 +94,11 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         //on ground
-        if(grounded)
+        if(grounded || grounded1)
         rb.AddForce(moveDirection.normalized * moveSpeed * 10f * sprintSpeed, ForceMode.Force);
 
         //in air
-        else if(!grounded)
+        else if(!grounded || !grounded1)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier * sprintSpeed, ForceMode.Force);
     }
 
