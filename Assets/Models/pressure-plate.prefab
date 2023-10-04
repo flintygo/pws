@@ -208,7 +208,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 3550457023304374541}
+  xChange: 0
   yChange: -0.1
+  zChange: 0
 --- !u!1 &8508356873220408884
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,7 +236,7 @@ Transform:
   m_GameObject: {fileID: 8508356873220408884}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.52, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4789905891125830344}
