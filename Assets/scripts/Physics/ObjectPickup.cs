@@ -20,6 +20,10 @@ public class ObjectPickup : MonoBehaviour
 
     private Vector3 rotateTorque;
 
+    private bool drop = false;
+
+    private bool rayHit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,8 +66,16 @@ public class ObjectPickup : MonoBehaviour
 
     void FixedUpdate()
     {
+        Ray CameraRay2 = PlayerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        rayHit = Physics.Raycast(CameraRay2, out RaycastHit HitInfo, PickupRange);
+        if (rayHit && CurrentObject){
+            drop = (HitInfo.transform.gameObject.name != CurrentObject.transform.gameObject.name);
+        }
+
+
         if (CurrentObject)
         {
+
             Vector3 DirectionToPoint = Pickuptarget.position - CurrentObject.position;
             float DistanceToPoint = DirectionToPoint.magnitude;
 
@@ -73,7 +85,7 @@ public class ObjectPickup : MonoBehaviour
 
             CurrentObject.AddTorque(rotateTorque);
 
-            if(DistanceToPoint > 3f){
+            if (DistanceToPoint > 3f || drop){
                 CurrentObject.useGravity = true;
                 CurrentObject.angularDrag = 0.05f;
                 CurrentObject = null;
