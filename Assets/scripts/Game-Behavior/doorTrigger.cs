@@ -11,17 +11,18 @@ public class doorTrigger : MonoBehaviour
     public float xChange;
     public float yChange;
     public float zChange;
+    private int collisionCount = 0;
     private Vector3 originalLocation;
 
 
     private void OnTriggerEnter(Collider other)
     {
-        isOpened = true;
+        collisionCount++;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        isOpened = false;
+        collisionCount--;
     }
 
     private void Start()
@@ -30,7 +31,7 @@ public class doorTrigger : MonoBehaviour
     }
     private void Update()
     {
-        
+        isOpened = (collisionCount > 0);
         door.transform.position = Vector3.Lerp(door.transform.position, new Vector3(xChange, yChange, zChange) * (isOpened ? 1 : 0) + originalLocation, Time.deltaTime * 5f);
 
         
