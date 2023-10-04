@@ -7,10 +7,10 @@
 
 ## Game mechanics To-Do
 - [x] Movement
-- [X] Moving and picking up physics objects
-- [ ] Lasers (Frame-by-frame simulation)
-- [ ] Mirrors
-- [ ] Laser objectives
+- [x] Moving and picking up physics objects
+- [x] Lasers (Frame-by-frame simulation)
+- [x] Mirrors
+- [x] Laser objectives
 - [ ] *Black Holes bending laser trajectory*
 
 ## Game essentials To-Do
