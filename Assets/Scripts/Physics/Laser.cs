@@ -11,6 +11,8 @@ public class Laser : MonoBehaviour
 
     private bool alive;
 
+    public Color laserColor;
+
     private Vector3 laserDirection;
 
     [SerializeField] private GameObject Trigger;
@@ -76,8 +78,8 @@ public class Laser : MonoBehaviour
          //Render the points
         lineRenderer.positionCount = points.Count;
         lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-        lineRenderer.startColor = new Color (1,0,0);
-        lineRenderer.endColor = new Color (1,0,0);
+        lineRenderer.startColor = new Color(laserColor.r, laserColor.g, laserColor.b);
+        lineRenderer.endColor = new Color(laserColor.r, laserColor.g, laserColor.b);
         lineRenderer.startWidth = 0.1f;
         lineRenderer.endWidth = 0.1f;
         lineRenderer.numCapVertices = 10;
