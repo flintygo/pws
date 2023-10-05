@@ -61,7 +61,7 @@ public class Laser : MonoBehaviour
                 }
                 else if(hit.transform.tag == "lasertrigger"){
                     var TriggerScript = Trigger.GetComponent<HandleTrigger>();
-                    TriggerScript.trigger();
+                    TriggerScript.trigger(laserColor);
                     alive = false;
                 }
                 else{
