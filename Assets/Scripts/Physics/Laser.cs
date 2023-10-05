@@ -11,7 +11,7 @@ public class Laser : MonoBehaviour
 
     private bool alive;
 
-    public Color laserColor;
+    [SerializeField] private Color laserColor;
 
     private Vector3 laserDirection;
 
