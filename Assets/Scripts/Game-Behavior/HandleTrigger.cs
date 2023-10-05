@@ -21,7 +21,7 @@ public class HandleTrigger : MonoBehaviour
 
     public void trigger(Color laserColor)
     {
-        if(laserColor == new Color(activationColor.r, activationColor.g, activationColor.b)){
+        if(laserColor == activationColor){
             Debug.Log("Triggered!");
         }
     }
