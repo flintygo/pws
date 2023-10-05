@@ -144,6 +144,8 @@ GameObject:
   - component: {fileID: 239296426043910191}
   - component: {fileID: 239296426043910176}
   - component: {fileID: 239296425525347281}
+  - component: {fileID: 8200975319781202283}
+  - component: {fileID: 540461114472375943}
   m_Layer: 0
   m_Name: PlayerObj
   m_TagString: Untagged
@@ -244,6 +246,31 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &8200975319781202283
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239296426043910178}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.22
+  m_Center: {x: 0, y: -0.775, z: 0}
+--- !u!114 &540461114472375943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239296426043910178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8733688e0ef46fc46b56e8c471c689ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &239296426188011445
 GameObject:
   m_ObjectHideFlags: 0
