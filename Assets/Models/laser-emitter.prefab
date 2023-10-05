@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3059331522355540318}
   - component: {fileID: 977310283749442964}
   - component: {fileID: 6275221650238354654}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: laser-emitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8928491041658968096}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Emitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7598551519118138888}
   - component: {fileID: 348985632325441532}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d906bebdb29684194f5b0bd8924edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Emitter: {fileID: 0}
+  laserColor: {r: 0, g: 0, b: 0, a: 0}
+  Trigger: {fileID: 0}
   LaserEmitter:
     serializedVersion: 2
     m_Bits: 0
