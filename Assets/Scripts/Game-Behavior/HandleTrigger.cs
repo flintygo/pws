@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class HandleTrigger : MonoBehaviour
 {
-    [SerializeField] private Color activationColor;
 
     // Start is called before the first frame update
     void Start()
@@ -21,8 +20,6 @@ public class HandleTrigger : MonoBehaviour
 
     public void trigger(Color laserColor)
     {
-        if(laserColor == activationColor){
             Debug.Log("Triggered!");
-        }
     }
 }
