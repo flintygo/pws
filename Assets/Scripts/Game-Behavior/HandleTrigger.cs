@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HandleTrigger : MonoBehaviour
 {
+    private bool open = false;
+    private bool previousTrigger = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,8 @@ public class HandleTrigger : MonoBehaviour
 
     public void trigger(Color laserColor)
     {
-            Debug.Log("Triggered!");
+        Debug.Log("Triggered!");
+        previousTrigger = true;
+
     }
 }
