@@ -44,9 +44,7 @@ public class HandleTrigger : MonoBehaviour
 
     public void trigger(Color laserColor)
     {
-        Debug.Log("Triggered!");
-        triggerDelay = 1f;
-
+        
     }
 
 }
