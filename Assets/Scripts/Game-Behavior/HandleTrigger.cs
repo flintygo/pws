@@ -34,17 +34,13 @@ public class HandleTrigger : MonoBehaviour
             open = false;
         }
 
-        if (open == true) {
-
-        }
-
         triggerDelay -= 0.5f;
         door.transform.position = Vector3.Lerp(door.transform.position, new Vector3(xChange, yChange, zChange) * (open ? 1 : 0) + originalLocation, Time.deltaTime * openingSpeed);
     }
 
     public void trigger(Color laserColor)
     {
-        
+        triggerDelay = 1;
     }
 
 }
