@@ -24,9 +24,6 @@ public class HandleTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        triggerDelay -= 0.5f;
-        Debug.Log(open);
-        door.transform.position = Vector3.Lerp(door.transform.position, new Vector3(xChange, yChange, zChange) * (open ? 1 : 0) + originalLocation, Time.deltaTime * openingSpeed);
     }
 
     void FixedUpdate() {
@@ -40,6 +37,9 @@ public class HandleTrigger : MonoBehaviour
         if (open == true) {
 
         }
+
+        triggerDelay -= 0.5f;
+        door.transform.position = Vector3.Lerp(door.transform.position, new Vector3(xChange, yChange, zChange) * (open ? 1 : 0) + originalLocation, Time.deltaTime * openingSpeed);
     }
 
     public void trigger(Color laserColor)
