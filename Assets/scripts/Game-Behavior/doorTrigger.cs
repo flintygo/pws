@@ -20,7 +20,7 @@ public class doorTrigger : MonoBehaviour
     private float originalRotationX;
     private float originalRotationY;
     private float originalRotationZ;
-
+    Quaternion targetRotation;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -44,7 +44,21 @@ public class doorTrigger : MonoBehaviour
     {
         isOpened = (collisionCount > 0);
         door.transform.position = Vector3.Lerp(door.transform.position, new Vector3(xChange, yChange, zChange) * (isOpened ? 1 : 0) + originalLocation, Time.deltaTime * openingSpeed);
-        transform.localRotation = Quaternion.Euler(originalRotationX,  originalRotationY + 180 * (isOpened ? 1 : 0), originalRotationZ);
+        
+        
+        if(isOpened == true) {
+            Quaternion targetRotation = Quaternion.Euler(xRotationChange, yRotationChange, zRotationChange);
+        } else {
+            Quaternion targetRotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+    
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, openingSpeed * Time.deltaTime);
+
+//        transform.rotation = Quaternion.Euler(
+//            Mathf.Lerp(originalRotationX, originalRotationX + (xRotationChange * (isOpened ? 1 : 0)), Time.deltaTime * openingSpeed), 
+//            Mathf.Lerp(originalRotationY, originalRotationY + (yRotationChange * (isOpened ? 1 : 0)), Time.deltaTime * openingSpeed), 
+//            Mathf.Lerp(originalRotationZ, originalRotationZ + (zRotationChange * (isOpened ? 1 : 0)), Time.deltaTime * openingSpeed)
+//            );
 
         
     }
