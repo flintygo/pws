@@ -44,7 +44,11 @@ public class doorTrigger : MonoBehaviour
     {
         isOpened = (collisionCount > 0);
         door.transform.position = Vector3.Lerp(door.transform.position, new Vector3(xChange, yChange, zChange) * (isOpened ? 1 : 0) + originalLocation, Time.deltaTime * openingSpeed);
-        transform.localRotation = Quaternion.Euler(originalRotationX,  originalRotationY + 180 * (isOpened ? 1 : 0), originalRotationZ);
+        transform.rotation = Quaternion.Euler(
+            Mathf.Lerp(originalRotationX, originalRotationX + (xRotationChange * (isOpened ? 1 : 0)), Time.deltaTime * openingSpeed), 
+            Mathf.Lerp(originalRotationY, originalRotationY + (yRotationChange * (isOpened ? 1 : 0)), Time.deltaTime * openingSpeed), 
+            Mathf.Lerp(originalRotationZ, originalRotationZ + (zRotationChange * (isOpened ? 1 : 0)), Time.deltaTime * openingSpeed)
+            );
 
         
     }
