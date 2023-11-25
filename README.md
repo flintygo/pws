@@ -14,13 +14,13 @@
 - [ ] *Black Holes bending laser trajectory*
 
 ## Game essentials To-Do
-- [ ] Multiple levels
+- [x] Multiple levels (In progress)
 - [ ] Menu
-- [ ] Level trigger system
+- [x] Level trigger system
 - [ ] *Level editor*
 
 ## Game assets To-Do
-- [ ] Level textures
+- [x] Level textures
 - [X] Physics objects
 
 cool beans.
