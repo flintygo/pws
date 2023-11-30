@@ -26,6 +26,7 @@ public class HandleTrigger2 : MonoBehaviour
     private void Start()
     {
         originalLocation = door.transform.position;
+        originalLocation1 = door1.transform.position;
     }
 
     // Update is called once per frame
