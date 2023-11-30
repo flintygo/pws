@@ -6,6 +6,8 @@ TagManager:
   tags:
   - mirror
   - lasertrigger
+  - lasertriggerdefinitive
+  - lasertriggerinverse
   layers:
   - Default
   - TransparentFX
