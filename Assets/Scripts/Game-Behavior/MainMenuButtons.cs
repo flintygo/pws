@@ -29,4 +29,9 @@ public class MainMenuButtons : MonoBehaviour
         Back.SetActive(false);
         LevelSelects.SetActive(false);
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
