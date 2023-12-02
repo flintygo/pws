@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
 {
-    public float sensX;
-    public float sensY;
+    public float sensX = 100;
+    public float sensY = 100;
     private float sprintSpeed;
 
     public Transform orientation;
 
     float xRotation;
     float yRotation;
+
+    void Awake () {
+	    QualitySettings.vSyncCount = 0;  // VSync must be disabled
+	    Application.targetFrameRate = 60;
+    }
 
     private void Start()
     {
