@@ -7,7 +7,6 @@ public class PlayerCam : MonoBehaviour
     public float sensX = 100;
     public float sensY = 100;
     private float sprintSpeed;
-
     public Transform orientation;
 
     float xRotation;

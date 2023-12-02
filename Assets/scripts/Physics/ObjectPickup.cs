@@ -72,6 +72,7 @@ public class ObjectPickup : MonoBehaviour
 
         Ray CameraRay3 = PlayerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         LeftClick.SetActive(Physics.Raycast(CameraRay3, out RaycastHit HitInfo2, PickupRange, PickupMask) || CurrentObject);
+        NoClick.SetActive(true);
     }
 
     void FixedUpdate()

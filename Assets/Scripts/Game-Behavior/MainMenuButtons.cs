@@ -5,22 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuButtons : MonoBehaviour
 {
+    [SerializeField] private GameObject MainSelects;
+    [SerializeField] private GameObject LevelSelects;
+    [SerializeField] private GameObject Back;
+
     public void StartLevel(string level)
     {
         SceneManager.LoadScene(level);
     }
 
-    public void SelectLevels(GameObject CallingGameObject)
+    public void SelectLevels()
     {
-        CallingGameObject.SetActive(false);
+        MainSelects.SetActive(false);
 
-        CallingGameObject.transform.parent.GetChild(1).gameObject.SetActive(true);
+        Back.SetActive(true);
+        LevelSelects.SetActive(true);
     }
 
-    public void BackSelectLevels(GameObject CallingGameObject)
+    public void BackSelectLevels()
     {
-        CallingGameObject.SetActive(false);
+        MainSelects.SetActive(true);
 
-        CallingGameObject.transform.parent.GetChild(0).gameObject.SetActive(true);
+        Back.SetActive(false);
+        LevelSelects.SetActive(false);
     }
 }
