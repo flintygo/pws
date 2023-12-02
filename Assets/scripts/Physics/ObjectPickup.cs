@@ -12,6 +12,11 @@ public class ObjectPickup : MonoBehaviour
     [SerializeField] private float PickupRange;
 
     [SerializeField] private float RotateSpeed;
+
+    [SerializeField] private GameObject NoClick;
+
+    [SerializeField] private GameObject LeftClick;
+
     private Rigidbody CurrentObject;
 
     private Quaternion CurrentObjectRotationOffset;
@@ -23,6 +28,8 @@ public class ObjectPickup : MonoBehaviour
     private bool drop = false;
 
     private bool rayHit;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +69,9 @@ public class ObjectPickup : MonoBehaviour
         else{
             rotateValue = 0;
         }
+
+        Ray CameraRay3 = PlayerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        LeftClick.SetActive(Physics.Raycast(CameraRay3, out RaycastHit HitInfo2, PickupRange, PickupMask) || CurrentObject);
     }
 
     void FixedUpdate()
