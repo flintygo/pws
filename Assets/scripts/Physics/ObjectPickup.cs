@@ -80,7 +80,7 @@ public class ObjectPickup : MonoBehaviour
         Ray CameraRay2 = PlayerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         rayHit = Physics.Raycast(CameraRay2, out RaycastHit HitInfo, PickupRange);
         if (rayHit && CurrentObject){
-            drop = (HitInfo.transform.gameObject.name != CurrentObject.transform.gameObject.name);
+            drop = (HitInfo.transform.gameObject.name != CurrentObject.transform.gameObject.name && HitInfo.transform.gameObject.name != "Player");
         }
 
 
