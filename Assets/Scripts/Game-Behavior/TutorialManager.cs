@@ -5,9 +5,11 @@ using UnityEngine;
 public class TutorialManager : MonoBehaviour
 {
     Vector3 lastMouseCoordinate = Vector3.zero;
-
+    [SerializeField] private  ObjectPickup ObjectPickupScript;
+    [SerializeField] private  PlayerCam PlayerCamScript;
     public GameObject[] popUps;
     private int popUpIndex;
+    private float TimeSinceStart = 0;
 
     private void Update()
     {
@@ -26,12 +28,12 @@ public class TutorialManager : MonoBehaviour
         if(popUpIndex == 0)
         {
             
-            if (Input.mousePosition != lastMouseCoordinate)
+            if (TimeSinceStart > 1f && PlayerCamScript.MouseMoved)
             {
                 popUpIndex++;
             }
 
-            lastMouseCoordinate = Input.mousePosition;
+            TimeSinceStart += Time.deltaTime;
         } else if(popUpIndex == 1)
         {
             if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
@@ -46,13 +48,13 @@ public class TutorialManager : MonoBehaviour
             }
         } else if(popUpIndex == 3)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse1))
+            if (ObjectPickupScript.CurrentObject)
             {
                 popUpIndex++;
             }
         } else if(popUpIndex == 4)
         {
-            if(Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Q))
+            if( (ObjectPickupScript.CurrentObject && Input.GetKeyDown(KeyCode.E) ) || (ObjectPickupScript.CurrentObject && Input.GetKeyDown(KeyCode.Q)))
             {
                 popUpIndex++;
             }

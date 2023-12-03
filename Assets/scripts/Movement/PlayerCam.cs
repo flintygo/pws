@@ -12,6 +12,8 @@ public class PlayerCam : MonoBehaviour
     float xRotation;
     float yRotation;
 
+    public bool MouseMoved = false;
+
     void Awake () {
 	    QualitySettings.vSyncCount = 0;  // VSync must be disabled
 	    Application.targetFrameRate = 60;
@@ -29,8 +31,10 @@ public class PlayerCam : MonoBehaviour
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
 
+        MouseMoved = ( mouseX != 0 || mouseY != 0);
+
         yRotation += mouseX;
-        
+
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 

@@ -17,7 +17,7 @@ public class ObjectPickup : MonoBehaviour
 
     [SerializeField] private GameObject LeftClick;
 
-    private Rigidbody CurrentObject;
+    public Rigidbody CurrentObject;
 
     private Quaternion CurrentObjectRotationOffset;
 
