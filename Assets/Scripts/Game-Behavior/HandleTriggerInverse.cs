@@ -29,11 +29,11 @@ public class HandleTriggerInverse : MonoBehaviour
     }
 
     void FixedUpdate() {
-        if (triggerDelay > 0 && phase < 5){
+        if (triggerDelay > 0 && phase < 10){
             phase++;
             open = true;
         }
-        else if (triggerDelay <= 0 && phase >= 5) {
+        else if (triggerDelay <= 0 && phase >= 10) {
             open = false;
         }
 
