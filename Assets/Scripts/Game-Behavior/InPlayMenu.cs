@@ -7,7 +7,7 @@ public class InPlayMenu : MonoBehaviour
 {
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.J))
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
