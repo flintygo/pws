@@ -85,7 +85,7 @@ public class Laser : MonoBehaviour
             }
             else
             {
-                points.Add(points.ElementAt(points.Count-1) + laserDirection * 50f);
+                points.Add(points.ElementAt(points.Count-1) + laserDirection * 100f);
                 alive = false;
             }
         }
