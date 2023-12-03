@@ -8,7 +8,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private  ObjectPickup ObjectPickupScript;
     [SerializeField] private  PlayerCam PlayerCamScript;
     public GameObject[] popUps;
-    private int popUpIndex;
+    public int popUpIndex;
     private float TimeSinceStart = 0;
 
     private void Update()
@@ -60,7 +60,7 @@ public class TutorialManager : MonoBehaviour
             }
         } else if(popUpIndex == 5)
         {
-            if(Input.GetKeyDown(KeyCode.W) && Input.GetKeyDown(KeyCode.LeftShift))
+            if(Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
             {
                 popUpIndex++;
             }
