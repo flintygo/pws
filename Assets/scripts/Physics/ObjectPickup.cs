@@ -92,7 +92,7 @@ public class ObjectPickup : MonoBehaviour
 
             CurrentObject.velocity = DirectionToPoint * 12f * DistanceToPoint;
 
-            rotateTorque = new Vector3 (0, rotateValue*2f, 0);
+            rotateTorque = new Vector3 (0, rotateValue*1f, 0);
 
             CurrentObject.AddTorque(rotateTorque);
 
