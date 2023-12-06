@@ -14,11 +14,6 @@ public class PlayerCam : MonoBehaviour
 
     public bool MouseMoved = false;
 
-    void Awake () {
-	    QualitySettings.vSyncCount = 0;  // VSync must be disabled
-	    Application.targetFrameRate = 60;
-    }
-
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
