@@ -1,20 +1,15 @@
+//Dit script zorgt ervoor dat een object de speler volgt (dezelfde positie aanneemt)
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FollowObjectPosition : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField] private GameObject PlayerThing;
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        transform.position = PlayerThing.transform.position;
+        transform.position = PlayerThing.transform.position; //Zet positie van het object war deze script op staat gelijk aan de positie van de speler
     }
 }
