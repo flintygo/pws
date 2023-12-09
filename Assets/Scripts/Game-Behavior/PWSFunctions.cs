@@ -63,7 +63,7 @@ public static class PWSFunctions
         CallingHandleTrigger.originalLocation = CallingHandleTrigger.door.transform.position;
     }
 
-    public static void SetHandleTrigger2OriginalLocation(HandleTrigger CallingHandleTrigger)
+    public static void SetHandleTrigger2OriginalLocation(HandleTrigger2 CallingHandleTrigger)
     {
         CallingHandleTrigger.originalLocation = CallingHandleTrigger.door.transform.position;
         CallingHandleTrigger.originalLocation1 = CallingHandleTrigger.door1.transform.position;
@@ -84,7 +84,7 @@ public static class PWSFunctions
         CallingHandleTrigger.door.transform.position = Vector3.Lerp(CallingHandleTrigger.door.transform.position, new Vector3(CallingHandleTrigger.xChange, CallingHandleTrigger.yChange, CallingHandleTrigger.zChange) * (CallingHandleTrigger.open ? 1 : 0) + CallingHandleTrigger.originalLocation, Time.deltaTime * CallingHandleTrigger.openingSpeed);
     }
 
-    public static void HandleTrigger2OpenDoorIfNeeded(HandleTrigger CallingHandleTrigger)
+    public static void HandleTrigger2OpenDoorIfNeeded(HandleTrigger2 CallingHandleTrigger)
     {
         if (CallingHandleTrigger.triggerDelay > 0){
             CallingHandleTrigger.open = true;
@@ -99,6 +99,11 @@ public static class PWSFunctions
     }
 
     public static void OpenDoor(HandleTrigger CallingHandleTrigger)
+    {
+        CallingHandleTrigger.triggerDelay = 1;
+    }
+
+    public static void OpenDoor2(HandleTrigger2 CallingHandleTrigger)
     {
         CallingHandleTrigger.triggerDelay = 1;
     }

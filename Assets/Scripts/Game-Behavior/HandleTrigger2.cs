@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static PWSFunctions;
 
 public class HandleTrigger2 : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public class HandleTrigger2 : MonoBehaviour
 
     public void trigger(Color laserColor)
     {
-        OpenDoor(this); //Open de deur wanneer de laser de trigger raakt
+        OpenDoor2(this); //Open de deur wanneer de laser de trigger raakt
     }
 
 }

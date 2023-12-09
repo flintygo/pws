@@ -1,3 +1,5 @@
+//Dit script zorgt ervoor dat een deur open gaat als een laser de reciever raakt, alleen dan voor altijd open blijft
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
