@@ -1,17 +1,15 @@
+//Dit script zorgt ervoor dat je tijdens het spelen van een level terug kan gaan naar het menu door esc te klikken
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static PWSFunctions;
 
 public class InPlayMenu : MonoBehaviour
 {
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            SceneManager.LoadScene("MainMenu");
-        }
+        OpenMenuIfNeeded(this); //Opent menu als escape gedrukt is
     }
 }

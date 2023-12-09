@@ -1,37 +1,34 @@
+//Dit script zorgt ervoor dat je in het main menu kan klikken op de knoppen, en verschillende menus in kan, zoals "Select levels"
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static PWSFunctions;
 
 public class MainMenuButtons : MonoBehaviour
 {
-    [SerializeField] private GameObject MainSelects;
-    [SerializeField] private GameObject LevelSelects;
-    [SerializeField] private GameObject Back;
+    [SerializeField] public GameObject MainSelects;
+    [SerializeField] public GameObject LevelSelects;
+    [SerializeField] public GameObject Back;
 
     public void StartLevel(string level)
     {
-        SceneManager.LoadScene(level);
+        SceneManager.LoadScene(level); //Open het geklikte level
     }
 
     public void SelectLevels()
     {
-        MainSelects.SetActive(false);
-
-        Back.SetActive(true);
-        LevelSelects.SetActive(true);
+        OpenLevelSelectMenu(this); //Opent het level select menu
     }
 
     public void BackSelectLevels()
     {
-        MainSelects.SetActive(true);
-
-        Back.SetActive(false);
-        LevelSelects.SetActive(false);
+        CloseLevelSelectMenu(this); //Doet hem weer weg
     }
 
     public void ExitGame()
     {
-        Application.Quit();
+        Application.Quit(); //Sluit de game af
     }
 }

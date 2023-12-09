@@ -1,44 +1,30 @@
+//Dit script zorgt ervoor dat je rond kan kijken als speler
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static PWSFunctions;
 
 public class PlayerCam : MonoBehaviour
 {
-    public float sensX = 100;
-    public float sensY = 100;
-    private float sprintSpeed;
+    public float sensX = 1000;
+    public float sensY = 1000;
+    public float sprintSpeed;
     public Transform orientation;
 
-    float xRotation;
-    float yRotation;
+    public float xRotation;
+    public float yRotation;
 
     public bool MouseMoved = false;
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        LockCursor(); //Zodat de cursor in het midden blijft
     }
 
     private void Update()
     {
-        //get mouse input
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
-
-        MouseMoved = ( mouseX != 0 || mouseY != 0);
-
-        yRotation += mouseX;
-
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
-
-        //FoV change when sprinting
-        sprintSpeed = GameObject.Find("Player").GetComponent<PlayerMovement>().sprintSpeed;
-        GetComponent<Camera>().fieldOfView = Mathf.Lerp(GetComponent<Camera>().fieldOfView, 60f * (Mathf.Pow(sprintSpeed, 0.5f)), Time.deltaTime * 10f);
-        
+        MoveMouse(this); //Beweeg de muis en dus playercam
+        EnableSprintFOVIfNeeded(this); //Als je sprint veranderd de field of view
     }
 }

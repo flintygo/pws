@@ -1,13 +1,14 @@
+//Dit script zorgt er voor dat wanneer een pressure plate wordt ingedrukt dat de deur die daarmee wordt geactiveerd ook echt geopend wordt.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static PWSFunctions;
 
 public class doorTrigger : MonoBehaviour
 {
     public GameObject door;
-
-    bool isOpened = false;
-
+    public bool isOpened = false;
     public float xChange;
     public float yChange;
     public float zChange;
@@ -15,51 +16,26 @@ public class doorTrigger : MonoBehaviour
     public float yRotationChange;
     public float zRotationChange;
     public float openingSpeed;
-    private int collisionCount = 0;
-    private Vector3 originalLocation;
-    private float originalRotationX;
-    private float originalRotationY;
-    private float originalRotationZ;
-    Quaternion targetRotation;
+    public int collisionCount = 0;
+    public Vector3 originalLocation;
 
     private void OnTriggerEnter(Collider other)
     {
-        collisionCount++;
+        PressurePlatePushed(this);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        collisionCount--;
+        PressurePlateUnpushed(this);
     }
 
     private void Start()
     {
-        originalLocation = door.transform.position;
-        originalRotationX = door.transform.rotation.x;
-        originalRotationY = door.transform.rotation.y;
-        originalRotationZ = door.transform.rotation.z;
+        SetOriginalLocation(this); //Aan het begin van de game, wordt gekeken naar wat de originele locatie van de deur was om lineair te interpoleren naar de target-locatie
     }
 
     private void Update()
     {
-        isOpened = (collisionCount > 0);
-        door.transform.position = Vector3.Lerp(door.transform.position, new Vector3(xChange, yChange, zChange) * (isOpened ? 1 : 0) + originalLocation, Time.deltaTime * openingSpeed);
-        
-        
-        if(isOpened == true) {
-            Quaternion targetRotation = Quaternion.Euler(xRotationChange, yRotationChange, zRotationChange);
-        } else {
-            Quaternion targetRotation = Quaternion.Euler(0f, 0f, 0f);
-        }
-    
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, openingSpeed * Time.deltaTime);
-
-//        transform.rotation = Quaternion.Euler(
-//            Mathf.Lerp(originalRotationX, originalRotationX + (xRotationChange * (isOpened ? 1 : 0)), Time.deltaTime * openingSpeed), 
-//            Mathf.Lerp(originalRotationY, originalRotationY + (yRotationChange * (isOpened ? 1 : 0)), Time.deltaTime * openingSpeed), 
-//            Mathf.Lerp(originalRotationZ, originalRotationZ + (zRotationChange * (isOpened ? 1 : 0)), Time.deltaTime * openingSpeed)
-//            );
-
-        
+        OpenDoorIfNeeded(this); //Open de deur als de pressureplate is ingedrukt
     }
 }

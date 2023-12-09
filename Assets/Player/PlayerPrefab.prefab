@@ -109,6 +109,7 @@ MonoBehaviour:
   RotateSpeed: 8
   NoClick: {fileID: 8559919940706638518}
   LeftClick: {fileID: 1325864805741002172}
+  CurrentObject: {fileID: 0}
 --- !u!223 &8995014961310024577
 Canvas:
   m_ObjectHideFlags: 0
@@ -517,10 +518,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be5cba2efdf80542bc4dd90bc485ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensX: 50
-  sensY: 50
-  InPlayMenuScript: {fileID: 4778005266060691034}
+  sensX: 250
+  sensY: 250
   orientation: {fileID: 239296425842632111}
+  MouseMoved: 0
 --- !u!1 &1325864805741002172
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,10 +695,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c086924d318bf24b8f9a832dcb1e1e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MouseDefault: {fileID: 8559919940706638518}
-  MouseLeft: {fileID: 1325864805741002172}
-  Menu: {fileID: 0}
-  MenuOpen: 0
 --- !u!1 &7863849047860149010
 GameObject:
   m_ObjectHideFlags: 0

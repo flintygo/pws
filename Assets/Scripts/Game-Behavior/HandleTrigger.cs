@@ -1,46 +1,34 @@
+//Dit script zorgt ervoor dat een deur open gaat als een laser de reciever raakt
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static PWSFunctions;
 
 public class HandleTrigger : MonoBehaviour
 {
-    private bool open = false;
-    private float triggerDelay = 1f;
-
+    public bool open = false;
+    public float triggerDelay = 1f;
     public GameObject door;
     public float xChange;
     public float yChange;
     public float zChange;
     public float openingSpeed;
-    private Vector3 originalLocation;
+    public Vector3 originalLocation;
 
-
-    // Start is called before the first frame update
     private void Start()
     {
-        originalLocation = door.transform.position;
+        SetHandleTriggerOriginalLocation(this); //Het slaat de originele locatie van de deur op
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate() 
     {
-    }
-
-    void FixedUpdate() {
-        if (triggerDelay > 0){
-            open = true;
-        }
-        else{
-            open = false;
-        }
-
-        triggerDelay -= 0.5f;
-        door.transform.position = Vector3.Lerp(door.transform.position, new Vector3(xChange, yChange, zChange) * (open ? 1 : 0) + originalLocation, Time.deltaTime * openingSpeed);
+        HandleTriggerOpenDoorIfNeeded(this); //Verander locatie als geopent
     }
 
     public void trigger(Color laserColor)
     {
-        triggerDelay = 1;
+        OpenDoor(this); //Open de deur wanneer de laser de trigger raakt
     }
 
 }

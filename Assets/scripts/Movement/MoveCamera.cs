@@ -1,3 +1,5 @@
+//Dit script zorgt ervoor dat de playercamera en de player dezelfde locatie hebben
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
