@@ -16,25 +16,18 @@ public class HandleTriggerDefinitive : MonoBehaviour
     public float openingSpeed;
     private Vector3 originalLocation;
 
-
-    // Start is called before the first frame update
     private void Start()
     {
-        originalLocation = door.transform.position;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        originalLocation = door.transform.position; //Definieerd de origiele locatie van de deur voor lineaire interpolatie
     }
 
     void FixedUpdate() {
         if (triggerDelay > 0){
-            open = true;
+            open = true; //Als de laser het heeft geraakt dan wordt hij opengezet
         }
 
         triggerDelay -= 0.5f;
-        door.transform.position = Vector3.Lerp(door.transform.position, new Vector3(xChange, yChange, zChange) * (open ? 1 : 0) + originalLocation, Time.deltaTime * openingSpeed);
+        door.transform.position = Vector3.Lerp(door.transform.position, new Vector3(xChange, yChange, zChange) * (open ? 1 : 0) + originalLocation, Time.deltaTime * openingSpeed); //En hier wordt hij opengezet
     }
 
     public void trigger(Color laserColor)

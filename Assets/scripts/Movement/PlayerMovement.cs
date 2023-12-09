@@ -1,3 +1,5 @@
+//Dit script zorgt er voor dat de speler kan bewegen, springe, sprinten, en meer!
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -45,14 +47,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        //ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
-        grounded1 = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, CanBePickedUp);
+        //Check of hij op de grond staat, dan kan je springen en normaal lopen namelijk, anders niet
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround); //Hier checkt hij of hij op grond staat
+        grounded1 = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, CanBePickedUp); //Physics object tellen ook, dus dat checken we hier
 
-        MyInput();
-        speedControl();
+        MyInput(); //Hier krijg je de input, dus of de speler heeft gekikt op bewegingstoetsen op zijn of haar toetsenbord
+        speedControl(); //Hier er voor zorgen dat 
 
-        //handle drag
+        //Zorg er voor dat in de lucht er weerstand is
         if (grounded || grounded1){
             rb.drag = groundDrag;
         }
@@ -61,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W)) {
-            sprintSpeed = sprintMultiplier;
+            sprintSpeed = sprintMultiplier; //Sprint-functionaliteiten
         } else {
             sprintSpeed = 1f;
         }
@@ -69,16 +71,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MovePlayer();
+        MovePlayer(); //Beweeg de speler
     }
 
     private void MyInput()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
+        horizontalInput = Input.GetAxisRaw("Horizontal"); //Pak de horizontale en verticale inputs, dus W, A, S, D bijvoorbeeld
         verticalInput = Input.GetAxisRaw("Vertical");
 
         //when to jump
-        if((Input.GetKey(jumpKey) && grounded && readyToJump) || (Input.GetKey(jumpKey) && grounded1 && readyToJump))
+        if((Input.GetKey(jumpKey) && grounded && readyToJump) || (Input.GetKey(jumpKey) && grounded1 && readyToJump)) //Als je kan springen en springt, dan spring je
         {
             readyToJump = false;
 
@@ -87,6 +89,8 @@ public class PlayerMovement : MonoBehaviour
             Invoke(nameof(ResetJump), jumpCooldown);
         }
     }
+
+    //Hieronder functions die uitgelegd zijn wanneer ze worden gecalled in de bovenstaande code
 
     private void MovePlayer()
     {
