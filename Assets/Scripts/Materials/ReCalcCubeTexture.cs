@@ -1,3 +1,5 @@
+//Dit script zorgt ervoor dat een materiaal op een obejct die is vergroot niet uitgerekt wordt, maar goed tiled zoals je zou verwachten. Dit wordt gebruikt voor muren en vloeren bijvoorbeeld. Dit is een script die door unity standaard is aangeleverd, voor uitleg, kijk in de UnityEngine documentatie. 
+
 using UnityEngine;
 
 [ExecuteInEditMode]
