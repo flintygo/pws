@@ -51,8 +51,8 @@ public class PlayerMovement : MonoBehaviour
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround); //Hier checkt hij of hij op grond staat
         grounded1 = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, CanBePickedUp); //Physics object tellen ook, dus dat checken we hier
 
-        MyInput(); //Hier krijg je de input, dus of de speler heeft gekikt op bewegingstoetsen op zijn of haar toetsenbord
-        speedControl(); //Hier er voor zorgen dat 
+        MyInput(); //Hier krijg je de input, dus of de speler heeft geklikt op bewegingstoetsen op zijn of haar toetsenbord
+        speedControl(); //Hier er voor zorgen dat je niet oneindig veel sneller kan rennen
 
         //Zorg er voor dat in de lucht er weerstand is
         if (grounded || grounded1){
